@@ -49,6 +49,15 @@ main{max-width:1200px;margin:0 auto;padding:22px}
 .g.off img{filter:grayscale(.9) brightness(.7)}
 .note{color:var(--mute);text-align:center;padding:40px 0}
 .me{font-size:13px;color:var(--mute)}
+select{background:#0f1330;border:1px solid var(--line);border-radius:10px;padding:8px 10px;color:var(--text);max-width:220px}
+.g button.play{margin-top:8px;width:100%;padding:6px 0;font-size:12px;background:linear-gradient(90deg,var(--accent),var(--accent2));border:0;color:#0b0d17;font-weight:600}
+#play{position:fixed;inset:0;background:#000;z-index:20;display:none;flex-direction:column}
+#play.on{display:flex}
+#play .stage{flex:1;min-height:0;position:relative}
+.pv{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;touch-action:none;background:#000;display:block}
+#play .ld{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--text);pointer-events:none}
+#play.live .ld{display:none}
+#play .tb{display:flex;gap:8px;align-items:center;padding:8px 12px;background:#0b0d17;border-top:1px solid var(--line)}
 </style>
 </head>
 <body>
@@ -74,12 +83,13 @@ main{max-width:1200px;margin:0 auto;padding:22px}
         <button id="guest" type="button">Browse as guest</button>
       </div>
     </form>
-    <div class="hint">Google / Apple sign-in isn’t supported here. If you only use those, set a password in your CloudMoon account first. Signing in doesn’t start any game session.</div>
+    <div class="hint">Google / Apple sign-in isn’t supported here. If you only use those, set a password in your CloudMoon account first. Signing in doesn’t start anything — pick a game and press Play to launch a session.</div>
   </section>
 
   <section id="lib" class="hidden">
     <div class="bar">
       <input id="q" type="search" placeholder="Search games…">
+      <select id="srv" class="hidden" title="Server"></select>
       <label class="chk"><input id="playable" type="checkbox"> Playable only</label>
       <span class="sp"></span>
       <span class="count" id="count"></span>
@@ -91,8 +101,12 @@ main{max-width:1200px;margin:0 auto;padding:22px}
   </section>
 </main>
 
+<div id="play"><div class="stage"><div class="ld"><div id="pst">Starting…</div></div></div>
+  <div class="tb"><button id="pexit">Exit</button><button id="pback">Back</button><button id="prest">Restart game</button><button id="pfs">Fullscreen</button><span class="sp"></span><span id="pstat" class="me"></span></div></div>
+
 <script type="module" src="./proxy.js"></script>
 <script type="module">
+import { Player } from "./player.js";
 const API_HOSTS = ["https://api.prod.cloudmoonapp.com", "https://api.cloudmoon.cloudbatata.com", "https://api.prod.geometry.today"];
 const SESSION = "singularitymoon.session";
 const $ = (id) => document.getElementById(id);
@@ -204,7 +218,7 @@ $("reload").addEventListener("click", () => loadLibrary());
 /* ---------- library ---------- */
 async function openLibrary() {
   showLib();
-  await Promise.all([loadMe(), loadLibrary()]);
+  await Promise.all([loadMe(), loadServers(), loadLibrary()]);
 }
 async function loadMe() {
   const me = $("me");
@@ -223,7 +237,7 @@ async function loadLibrary() {
   $("count").textContent = "";
   say("Loading game library…");
   try {
-    const path = session && session.token ? "/game/list?select_server=0" : "/game/guest_list";
+    const path = session && session.token ? "/game/list?select_server=" + (localStorage.getItem("selectedServer") || 0) : "/game/guest_list";
     const [j, c] = await Promise.all([api(path), api("/game/category").catch(() => null)]);
     if (c && c.code === 0 && c.data && Array.isArray(c.data.list)) {
       catNames = {};
@@ -285,6 +299,11 @@ function render() {
     if (g.high) tag("High-end", "hi");
     if (g.status !== 1) tag(g.status === 4 ? "Maintenance" : "Unavailable", "off");
     b.append(t, tags);
+    if (g.status === 1 && session && session.token) {
+      const pb = document.createElement("button"); pb.className = "play"; pb.textContent = "Play";
+      pb.onclick = () => launch(g);
+      b.append(pb);
+    }
     d.append(im, b);
     frag.append(d);
   }
@@ -295,6 +314,64 @@ function render() {
 }
 $("q").addEventListener("input", render);
 $("playable").addEventListener("change", render);
+
+/* ---------- servers + player ---------- */
+async function loadServers() {
+  const sel = $("srv");
+  if (!(session && session.token)) { sel.classList.add("hidden"); return; }
+  try {
+    const j = await api("/game/server_list");
+    const list = j.code === 0 && j.data && Array.isArray(j.data.list) ? j.data.list : [];
+    if (!list.length) { sel.classList.add("hidden"); return; }
+    sel.textContent = "";
+    const saved = localStorage.getItem("selectedServer");
+    for (const x of list) {
+      const o = document.createElement("option");
+      o.value = String(x.id);
+      const label = x.name || x.title || x.region || x.city || x.country || x.label || x.location || ("Server " + x.id);
+      o.textContent = String(label) + (x.ping ? " · " + x.ping + "ms" : "");
+      sel.append(o);
+    }
+    sel.value = list.some((x) => String(x.id) === saved) ? saved : String(list[0].id);
+    try { localStorage.setItem("selectedServer", sel.value); } catch {}
+    sel.classList.remove("hidden");
+  } catch (e) { console.warn("server_list failed", e); }
+}
+$("srv").addEventListener("change", () => { try { localStorage.setItem("selectedServer", $("srv").value); } catch {} });
+
+let player = null;
+const getLibcurl = () => window.__getProxy({ log, say }).then((s) => s.libcurl);
+async function launch(g) {
+  if (player) return;
+  if (!(session && session.token)) { say("Sign in to play", "err"); return; }
+  const serverId = parseInt($("srv").value || localStorage.getItem("selectedServer") || "0", 10);
+  if (!serverId) { say("Pick a server first", "err"); return; }
+  const box = $("play");
+  box.classList.add("on"); box.classList.remove("live");
+  $("pst").textContent = "Starting " + g.title + "…"; $("pstat").textContent = "";
+  let androidId = null;
+  try {
+    const p = await api("/phone/list");
+    androidId = p.code === 0 && p.data && p.data.list && p.data.list[0] && p.data.list[0].android_id;
+  } catch (e) { console.warn(e); }
+  if (!androidId) { box.classList.remove("on"); say("No cloud phone found on this account", "err"); return; }
+  player = new Player({
+    api, getLibcurl, game: g.id, androidId, serverId, mount: box,
+    onStatus: (t, cls) => { $("pst").textContent = t; $("pstat").textContent = t; $("pstat").style.color = cls === "err" ? "var(--bad)" : cls === "ok" ? "var(--ok)" : ""; },
+    onEnd: (reason) => {
+      player = null;
+      const v = box.querySelector("video"); if (v) v.remove();
+      box.classList.remove("on", "live");
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      say(reason || "Session ended", reason ? "err" : "");
+    },
+  });
+  player.start();
+}
+$("pexit").addEventListener("click", () => player && player.stop());
+$("pback").addEventListener("click", () => player && player.back());
+$("prest").addEventListener("click", () => player && player.restartGame());
+$("pfs").addEventListener("click", () => { const b = $("play"); document.fullscreenElement ? document.exitFullscreen() : b.requestFullscreen && b.requestFullscreen().catch(() => {}); });
 
 /* ---------- boot ---------- */
 (async () => {
