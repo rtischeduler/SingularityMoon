@@ -209,6 +209,7 @@ async function api(path, { method = "GET", body } = {}) {
       u.searchParams.set("site", "cm");
       u.searchParams.set("device_id", deviceId());
       const headers = { "Content-Type": "application/json", "X-User-Language": "en", "X-User-Locale": "US" };
+      headers["Origin"] = "https://web.cloudmoonapp.com"; headers["Referer"] = "https://web.cloudmoonapp.com/";   // the real site's requests come from this origin
       if (session && session.token) headers["X-User-Token"] = session.token;
       const init = { method, headers };
       if (body !== undefined) init.body = JSON.stringify(body);
