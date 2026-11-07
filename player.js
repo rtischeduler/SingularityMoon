@@ -93,7 +93,7 @@ export class Player {
   constructor({ api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd, onDebug }) {
     Object.assign(this, { api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd, onDebug });
     this.stopped = false; this.rot = 0; this.typing = false; this.cfg = null;
-    this.keys = new Map(); this.resetTried = false; this.touchN = 20; this.pending = null; this.pcands = [];
+    this.keys = new Map(); this.touchN = 20; this.pending = null; this.pcands = [];
     this.stream = new MediaStream();
   }
   say(t, cls = "") { this.onStatus && this.onStatus(t, cls); }
@@ -142,18 +142,6 @@ export class Player {
           this.say(queued ? "Still in queue…" : "Waiting for the server to assign a phone…");
         }
         await sleep(5000); continue;
-      }
-      if (j.code === 30001 && !this.resetTried) {
-        // The real site tells the user to "Clear Games Cache" (POST /game/reset_all) and reopen the game. Do that for them once.
-        this.resetTried = true;
-        this.say("Couldn't start the session — clearing the game cache and retrying…");
-        this.onDebug && this.onDebug("30001 → POST /game/reset_all, then retry");
-        try {
-          const r = await this.api("/game/reset_all", { method: "POST" });
-          console.log("[player] /game/reset_all reply", r);
-        } catch (e) { console.warn("[player] reset_all failed", e); }
-        try { await this.api("/phone/disconnect", { method: "POST", body: { android_id: this.androidId, game_name: this.game } }); } catch {}
-        await sleep(2500); continue;
       }
       const friendly = ERR[j.code] || "Server refused the session";
       throw new Error(friendly + " [code " + j.code + (j.message ? ": " + j.message : "") + "]");
