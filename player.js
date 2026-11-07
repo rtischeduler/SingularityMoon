@@ -90,8 +90,8 @@ function preferCodec(sdp, pt) {
 const addRrtr = (sdp) => sdp.replace(/(m=video.*\r\n)/, "$1a=rtcp-xr:rrtr\r\n").replace(/(m=audio.*\r\n)/, "$1a=rtcp-xr:rrtr\r\n");
 
 export class Player {
-  constructor({ api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd }) {
-    Object.assign(this, { api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd });
+  constructor({ api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd, onDebug }) {
+    Object.assign(this, { api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd, onDebug });
     this.stopped = false; this.rot = 0; this.typing = false; this.cfg = null;
     this.keys = new Map(); this.touchN = 20; this.pending = null; this.pcands = [];
     this.stream = new MediaStream();
@@ -114,19 +114,37 @@ export class Player {
   }
 
   async _connect() {
+    let queued = false, blank = 0;
     for (;;) {
       if (this.stopped) return;
-      this.say("Requesting a cloud phone…");
-      const j = await this.api("/phone/connect", { method: "POST", body: {
-        android_id: this.androidId, game_name: this.game, screen_res: "720x1280", server_id: this.serverId,
-        params: JSON.stringify({ language: "en", locale: (navigator.language.split("-")[1] || "").toLowerCase() }), ad_unblock: true } });
-      if (j.code === 0 && j.data && j.data.android_instance_id) { this.conn = j.data; return; }
-      if (j.code === 0 && j.data && j.data.position) {
-        const m = Math.max(1, Math.ceil((j.data.waiting_time || 60) / 60));
-        this.say(`In queue — position ${j.data.position}, about ${m} min`);
+      if (!queued) this.say("Requesting a cloud phone…");
+      let j;
+      try {
+        j = await this.api("/phone/connect", { method: "POST", body: {
+          android_id: this.androidId, game_name: this.game, screen_res: "720x1280", server_id: this.serverId,
+          params: JSON.stringify({ language: "en", locale: (navigator.language.split("-")[1] || "").toLowerCase() }), ad_unblock: true } });
+      } catch (e) {
+        if (!queued) throw e;               // like the site: ignore hiccups while waiting in the queue
+        console.warn("[player] queue poll failed", e); await sleep(5000); continue;
+      }
+      console.log("[player] /phone/connect reply", j);
+      this.onDebug && this.onDebug("/phone/connect → " + JSON.stringify(j).slice(0, 600));
+      const d = (j && j.data) || {};
+      if (j.code === 0 && d.android_instance_id) { this.conn = d; return; }
+      if (j.code === 0) {
+        const waiting = d.position || d.waiting_time || d.in_queue_time || d.priority_queue_length;
+        if (waiting) {
+          queued = true; blank = 0;
+          const m = d.waiting_time ? Math.max(1, Math.ceil(d.waiting_time / 60)) : null;
+          this.say("In queue" + (d.position ? " — position " + d.position : "") + (m ? ", about " + m + " min" : "") + (d.priority_queue_length ? " (priority queue: " + d.priority_queue_length + ")" : ""));
+        } else {
+          if (++blank > 24) throw new Error("The server accepted the request but never assigned a phone. Reply: " + JSON.stringify(j).slice(0, 300));
+          this.say(queued ? "Still in queue…" : "Waiting for the server to assign a phone…");
+        }
         await sleep(5000); continue;
       }
-      throw new Error(ERR[j.code] || (j.message ? `${j.message} (${j.code})` : "Could not start the session"));
+      const friendly = ERR[j.code] || "Server refused the session";
+      throw new Error(friendly + " [code " + j.code + (j.message ? ": " + j.message : "") + "]");
     }
   }
 
@@ -137,6 +155,7 @@ export class Player {
     const j = await this.api("/web/sid?sid=" + encodeURIComponent(sid));
     if (j.code !== 0 || !j.data) throw new Error(j.message || "Session verification failed");
     this.sess = j.data;
+    this.onDebug && this.onDebug("/web/sid → ok (game " + (j.data.game || this.game) + ")");
     try {
       const c = await this.api("/web/game_config?pkg=" + encodeURIComponent(this.game));
       if (c.code === 0 && c.data) this.cfg = c.data;
