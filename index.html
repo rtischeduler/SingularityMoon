@@ -58,6 +58,13 @@ select{background:#0f1330;border:1px solid var(--line);border-radius:10px;paddin
 #play .ld{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:20px;color:var(--text);pointer-events:none}
 #play.live .ld{display:none}
 #play .tb{display:flex;gap:8px;align-items:center;padding:8px 12px;background:#0b0d17;border-top:1px solid var(--line)}
+#cbtn{position:fixed;right:12px;bottom:12px;z-index:60;padding:7px 12px;font-size:12px;background:#0b0d17ee;border:1px solid var(--accent);border-radius:99px;color:var(--text)}
+#con{position:fixed;left:0;right:0;bottom:0;height:46vh;z-index:59;background:#07080fee;border-top:1px solid var(--accent);display:none;flex-direction:column;backdrop-filter:blur(6px)}
+#con.on{display:flex}
+#con .ch{display:flex;gap:8px;align-items:center;padding:6px 10px;border-bottom:1px solid var(--line);font-size:12px;color:var(--mute)}
+#con .ch button{padding:4px 10px;font-size:12px}
+#clog{flex:1;overflow:auto;margin:0;padding:8px 10px;font:11px/1.45 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;word-break:break-all;color:#cfd4ff;user-select:text;-webkit-user-select:text}
+#clog .w{color:#ffd37a}#clog .e{color:var(--bad)}
 </style>
 </head>
 <body>
@@ -104,6 +111,60 @@ select{background:#0f1330;border:1px solid var(--line);border-radius:10px;paddin
 <div id="play"><div class="stage"><div class="ld"><div><div id="pst">Starting…</div><div id="pdbg" style="font:11px monospace;color:var(--mute);margin-top:14px;white-space:pre-wrap;word-break:break-all;max-width:90vw"></div></div></div></div>
   <div class="tb"><button id="pexit">Exit</button><button id="pback">Back</button><button id="prest">Restart game</button><button id="pfs">Fullscreen</button><span class="sp"></span><span id="pstat" class="me"></span></div></div>
 
+<button id="cbtn" type="button">Console</button>
+<div id="con"><div class="ch"><strong>Console</strong><span id="ccount"></span><span class="sp"></span><button id="ccopy" type="button">Copy</button><button id="cclear" type="button">Clear</button><button id="cclose" type="button">Close</button></div><pre id="clog"></pre></div>
+
+<script>
+/* on-screen console: captures console.*, errors and rejections so they can be copied */
+(() => {
+  const MAX = 800, lines = [];
+  const fmt = (v) => {
+    if (v instanceof Error) return v.stack || v.message;
+    if (typeof v === "string") return v;
+    try { return JSON.stringify(v, (k, x) => (/token|password|authorization/i.test(k) ? "***" : x)); } catch { return String(v); }
+  };
+  const el = () => document.getElementById("clog");
+  const push = (lvl, args) => {
+    const t = new Date().toISOString().slice(11, 23);
+    const text = t + " [" + lvl + "] " + args.map(fmt).join(" ").replace(/ghp_[A-Za-z0-9]+/g, "***");
+    lines.push({ lvl, text }); if (lines.length > MAX) lines.shift();
+    const c = el(); if (!c) return;
+    const d = document.createElement("div"); if (lvl === "error") d.className = "e"; else if (lvl === "warn") d.className = "w";
+    d.textContent = text; c.append(d);
+    while (c.childNodes.length > MAX) c.firstChild.remove();
+    const n = document.getElementById("ccount"); if (n) n.textContent = lines.length + " lines";
+    if (document.getElementById("con").classList.contains("on")) c.scrollTop = c.scrollHeight;
+  };
+  for (const l of ["log", "info", "warn", "error", "debug"]) {
+    const o = console[l].bind(console);
+    console[l] = (...a) => { try { push(l === "info" || l === "debug" ? "log" : l, a); } catch {} o(...a); };
+  }
+  addEventListener("error", (e) => push("error", ["window.onerror:", e.message, (e.filename || "") + ":" + (e.lineno || "")]));
+  addEventListener("unhandledrejection", (e) => push("error", ["unhandledrejection:", e.reason]));
+  window.__consoleText = () => lines.map((x) => x.text).join("\n");
+  const copy = async () => {
+    const text = window.__consoleText(); const b = document.getElementById("ccopy");
+    let ok = false;
+    try { await navigator.clipboard.writeText(text); ok = true; } catch {}
+    if (!ok) {
+      const ta = document.createElement("textarea"); ta.value = text; ta.style.cssText = "position:fixed;opacity:0;top:0";
+      document.body.append(ta); ta.select();
+      try { ok = document.execCommand("copy"); } catch {}
+      ta.remove();
+    }
+    b.textContent = ok ? "Copied!" : "Copy failed"; setTimeout(() => (b.textContent = "Copy"), 1500);
+  };
+  addEventListener("DOMContentLoaded", () => {
+    const con = document.getElementById("con"), c = el();
+    for (const x of lines) { const d = document.createElement("div"); if (x.lvl === "error") d.className = "e"; else if (x.lvl === "warn") d.className = "w"; d.textContent = x.text; c.append(d); }
+    document.getElementById("ccount").textContent = lines.length + " lines";
+    document.getElementById("cbtn").onclick = () => { con.classList.toggle("on"); c.scrollTop = c.scrollHeight; };
+    document.getElementById("cclose").onclick = () => con.classList.remove("on");
+    document.getElementById("cclear").onclick = () => { lines.length = 0; c.textContent = ""; document.getElementById("ccount").textContent = "0 lines"; };
+    document.getElementById("ccopy").onclick = copy;
+  });
+})();
+</script>
 <script type="module" src="./proxy.js"></script>
 <script type="module">
 import { Player } from "./player.js";
@@ -158,10 +219,12 @@ async function api(path, { method = "GET", body } = {}) {
         let j;
         try { j = JSON.parse(text); } catch { lastErr = new Error("Unexpected response (" + r.status + ")"); continue; }
         apiHost = h;
+        console.log("[api] " + method + " " + path + " @" + new URL(h).host + " → HTTP " + r.status + " " + text.slice(0, 400));
         if (String(j.code) === "40001") { signOut(true); throw new Error("Session expired — sign in again"); }
         return j;
       } catch (e) {
         if (e && /expired/.test(e.message)) throw e;
+        console.warn("[api] " + method + " " + path + " @" + new URL(h).host + " failed: " + (e && e.message || e));
         lastErr = e;
       }
     }
@@ -355,6 +418,7 @@ async function launch(g) {
     androidId = p.code === 0 && p.data && p.data.list && p.data.list[0] && p.data.list[0].android_id;
   } catch (e) { console.warn(e); }
   if (!androidId) { box.classList.remove("on"); say("No cloud phone found on this account", "err"); return; }
+  console.log("[launch] game=" + g.id + " androidId=" + androidId + " serverId=" + serverId);
   player = new Player({
     api, getLibcurl, game: g.id, androidId, serverId, mount: box,
     onStatus: (t, cls) => { $("pst").textContent = t; $("pstat").textContent = t; $("pstat").style.color = cls === "err" ? "var(--bad)" : cls === "ok" ? "var(--ok)" : ""; },

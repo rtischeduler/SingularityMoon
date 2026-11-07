@@ -7,7 +7,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const STUN = [{ urls: "stun:stun.ipfire.org:3478" }, { urls: "stun:global.stun.twilio.com:3478" }, { urls: "stun:stun.l.google.com:19302" }];
 const ERR = {
-  30001: "The game couldn't start. Try again in a moment.",
+  30001: "Connection failed. Please try 'Clear Games Cache' and reopen the game.",
   30002: "Free access is blocked for this account right now (ad blocker / plan needed).",
   30003: "No play time left on this account.",
   30004: "Please wait about 3 minutes before starting again.",
@@ -93,7 +93,7 @@ export class Player {
   constructor({ api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd, onDebug }) {
     Object.assign(this, { api, getLibcurl, game, androidId, serverId, mount, onStatus, onEnd, onDebug });
     this.stopped = false; this.rot = 0; this.typing = false; this.cfg = null;
-    this.keys = new Map(); this.touchN = 20; this.pending = null; this.pcands = [];
+    this.keys = new Map(); this.resetTried = false; this.touchN = 20; this.pending = null; this.pcands = [];
     this.stream = new MediaStream();
   }
   say(t, cls = "") { this.onStatus && this.onStatus(t, cls); }
@@ -142,6 +142,18 @@ export class Player {
           this.say(queued ? "Still in queue…" : "Waiting for the server to assign a phone…");
         }
         await sleep(5000); continue;
+      }
+      if (j.code === 30001 && !this.resetTried) {
+        // The real site tells the user to "Clear Games Cache" (POST /game/reset_all) and reopen the game. Do that for them once.
+        this.resetTried = true;
+        this.say("Couldn't start the session — clearing the game cache and retrying…");
+        this.onDebug && this.onDebug("30001 → POST /game/reset_all, then retry");
+        try {
+          const r = await this.api("/game/reset_all", { method: "POST" });
+          console.log("[player] /game/reset_all reply", r);
+        } catch (e) { console.warn("[player] reset_all failed", e); }
+        try { await this.api("/phone/disconnect", { method: "POST", body: { android_id: this.androidId, game_name: this.game } }); } catch {}
+        await sleep(2500); continue;
       }
       const friendly = ERR[j.code] || "Server refused the session";
       throw new Error(friendly + " [code " + j.code + (j.message ? ": " + j.message : "") + "]");
