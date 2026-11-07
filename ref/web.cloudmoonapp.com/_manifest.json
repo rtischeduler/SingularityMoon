@@ -1,714 +1,252 @@
 {
   "origin": "https://web.cloudmoonapp.com",
-  "start": "https://web.cloudmoonapp.com",
+  "start": "https://web.cloudmoonapp.com/run-site/index.html",
   "files": [
     {
-      "url": "https://web.cloudmoonapp.com",
-      "file": "ref/web.cloudmoonapp.com/index.html",
+      "url": "https://web.cloudmoonapp.com/run-site/index.html",
+      "file": "ref/web.cloudmoonapp.com/run-site/index.html",
       "type": "text/html; charset=utf-8",
-      "bytes": 120767
+      "bytes": 3418
     },
     {
-      "url": "https://web.cloudmoonapp.com/favicon/favicon-32.png",
-      "file": "ref/web.cloudmoonapp.com/favicon/favicon-32.png",
+      "url": "https://web.cloudmoonapp.com/run-site/images/favicon.ico",
+      "file": "ref/web.cloudmoonapp.com/run-site/images/favicon.ico",
+      "type": "image/vnd.microsoft.icon",
+      "bytes": 12006
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/main.css",
+      "file": "ref/web.cloudmoonapp.com/run-site/main.css",
+      "type": "text/css; charset=utf-8",
+      "bytes": 15614
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/prebid11.24.0.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/prebid11.24.0.js",
+      "type": "application/javascript",
+      "bytes": 254011
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/entry/start.CmQhTdOd.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/entry/start.CmQhTdOd.js",
+      "type": "application/javascript",
+      "bytes": 77
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/Cm_h3sdV.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/Cm_h3sdV.js",
+      "type": "application/javascript",
+      "bytes": 28398
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/VuTCb5hW.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/VuTCb5hW.js",
+      "type": "application/javascript",
+      "bytes": 60646
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/entry/app.CZTWwwtN.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/entry/app.CZTWwwtN.js",
+      "type": "application/javascript",
+      "bytes": 3013
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/HclGiUj8.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/HclGiUj8.js",
+      "type": "application/javascript",
+      "bytes": 1211
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/xihTtKlq.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/xihTtKlq.js",
+      "type": "application/javascript",
+      "bytes": 65
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/nodes/0.tw-FTWlG.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/nodes/0.tw-FTWlG.js",
+      "type": "application/javascript",
+      "bytes": 933
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/images/enter_game_btn_1.png",
+      "file": "ref/web.cloudmoonapp.com/run-site/images/enter_game_btn_1.png",
       "type": "image/png",
-      "bytes": 1729
+      "bytes": 46018
     },
     {
-      "url": "https://web.cloudmoonapp.com/favicon/favicon-16.png",
-      "file": "ref/web.cloudmoonapp.com/favicon/favicon-16.png",
+      "url": "https://web.cloudmoonapp.com/run-site/images/enter_game_btn_2.png",
+      "file": "ref/web.cloudmoonapp.com/run-site/images/enter_game_btn_2.png",
       "type": "image/png",
-      "bytes": 663
+      "bytes": 46189
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/0.DiNR_R5u.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/0.DiNR_R5u.css",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/nodes/1.DKgXkUcO.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/nodes/1.DKgXkUcO.js",
+      "type": "application/javascript",
+      "bytes": 354
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/IqUXBlCy.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/IqUXBlCy.js",
+      "type": "application/javascript",
+      "bytes": 294
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/nodes/2.D2AbakOU.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/nodes/2.D2AbakOU.js",
+      "type": "application/javascript",
+      "bytes": 313573
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/n_UmA-TH.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/n_UmA-TH.js",
+      "type": "application/javascript",
+      "bytes": 3916
+    },
+    {
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/assets/2.DRl2TaNq.css",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/assets/2.DRl2TaNq.css",
       "type": "text/css; charset=utf-8",
-      "bytes": 8812
+      "bytes": 22134
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/2.BCUuSQFc.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/2.BCUuSQFc.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 1286
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/Footer.BVrQBezB.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/Footer.BVrQBezB.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 3146
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/DownloadFixed.ks4c8i1G.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/DownloadFixed.ks4c8i1G.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 24650
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/GameLauncher.oXjYqKs_.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/GameLauncher.oXjYqKs_.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 3535
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/GameDesc.FjBGeWnI.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/GameDesc.FjBGeWnI.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 11800
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/Download.CEMpvAk6.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/Download.CEMpvAk6.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 1286
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/FAQ.Bec0UfkP.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/FAQ.Bec0UfkP.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 1651
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/assets/16.Vm9Q0vvm.css",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/assets/16.Vm9Q0vvm.css",
-      "type": "text/css; charset=utf-8",
-      "bytes": 5168
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/entry/start.DkQM1hTV.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/entry/start.DkQM1hTV.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/Bjy-W4x2.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/Bjy-W4x2.js",
       "type": "application/javascript",
-      "bytes": 83
+      "bytes": 1365
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/bEyYIi9z.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/bEyYIi9z.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/yJ5f6g4-.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/yJ5f6g4-.js",
       "type": "application/javascript",
-      "bytes": 33384
+      "bytes": 5988
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DRnWhx_Z.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DRnWhx_Z.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/eLn7al9N.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/eLn7al9N.js",
       "type": "application/javascript",
-      "bytes": 1568
+      "bytes": 6026
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/C_wJjJIt.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/C_wJjJIt.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/BZMbTSzE.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/BZMbTSzE.js",
       "type": "application/javascript",
-      "bytes": 25009
+      "bytes": 7034
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DX8m7mvW.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DX8m7mvW.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/BlEqXCoe.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/BlEqXCoe.js",
       "type": "application/javascript",
-      "bytes": 9483
+      "bytes": 6916
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/D0iwhpLH.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/D0iwhpLH.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/BH7D_OsC.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/BH7D_OsC.js",
       "type": "application/javascript",
-      "bytes": 504
+      "bytes": 12656
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/entry/app.Bc7SyLn7.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/entry/app.Bc7SyLn7.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/CwH0ywFH.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/CwH0ywFH.js",
       "type": "application/javascript",
-      "bytes": 13113
+      "bytes": 6805
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/Bzak7iHL.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/Bzak7iHL.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/B7UDVrhM.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/B7UDVrhM.js",
       "type": "application/javascript",
-      "bytes": 96
+      "bytes": 7916
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/CkfUSIYj.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/CkfUSIYj.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/Dn6NIl-o.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/Dn6NIl-o.js",
       "type": "application/javascript",
-      "bytes": 785
+      "bytes": 6479
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DgHYvFK0.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DgHYvFK0.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/BciDFrnW.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/BciDFrnW.js",
       "type": "application/javascript",
-      "bytes": 436
+      "bytes": 12993
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/BBZl5idd.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/BBZl5idd.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/6lqJ9eQa.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/6lqJ9eQa.js",
       "type": "application/javascript",
-      "bytes": 339
+      "bytes": 8518
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DWf-wvKX.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DWf-wvKX.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/C83GA3wP.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/C83GA3wP.js",
       "type": "application/javascript",
-      "bytes": 2529
+      "bytes": 7757
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/n50NdzMx.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/n50NdzMx.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/ObqQG6NC.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/ObqQG6NC.js",
       "type": "application/javascript",
-      "bytes": 638
+      "bytes": 7476
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/0.DCnVPl8e.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/0.DCnVPl8e.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/CtvntwnH.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/CtvntwnH.js",
       "type": "application/javascript",
-      "bytes": 16660
+      "bytes": 7133
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/CGmra_7w.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/CGmra_7w.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/DpXM6SYD.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/DpXM6SYD.js",
       "type": "application/javascript",
-      "bytes": 40
+      "bytes": 10200
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/BgqKrh7G.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/BgqKrh7G.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/X3dBnzIR.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/X3dBnzIR.js",
       "type": "application/javascript",
-      "bytes": 190
+      "bytes": 6960
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/BAlDkw64.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/BAlDkw64.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/DZDNSdzA.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/DZDNSdzA.js",
       "type": "application/javascript",
-      "bytes": 523
+      "bytes": 10458
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/CDSWv4hl.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/CDSWv4hl.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/DasyCrcM.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/DasyCrcM.js",
       "type": "application/javascript",
-      "bytes": 494
+      "bytes": 6903
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/q36Eg1F8.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/q36Eg1F8.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/CRldtcgp.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/CRldtcgp.js",
       "type": "application/javascript",
-      "bytes": 1676
+      "bytes": 6995
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/c3Jta_Dn.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/c3Jta_Dn.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/C6HLIF-8.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/C6HLIF-8.js",
       "type": "application/javascript",
-      "bytes": 12259
+      "bytes": 10192
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DV3WfrKw.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DV3WfrKw.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/Badpffai.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/Badpffai.js",
       "type": "application/javascript",
-      "bytes": 4656
+      "bytes": 9077
     },
     {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/5aMAttcl.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/5aMAttcl.js",
+      "url": "https://web.cloudmoonapp.com/run-site/_app/immutable/chunks/D0_9gd4a.js",
+      "file": "ref/web.cloudmoonapp.com/run-site/_app/immutable/chunks/D0_9gd4a.js",
       "type": "application/javascript",
-      "bytes": 400
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DU-wofq6.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DU-wofq6.js",
-      "type": "application/javascript",
-      "bytes": 13645
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/Bfc47y5P.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/Bfc47y5P.js",
-      "type": "application/javascript",
-      "bytes": 234
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/CJTs25X2.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/CJTs25X2.js",
-      "type": "application/javascript",
-      "bytes": 3134
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/vIHFUZ9F.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/vIHFUZ9F.js",
-      "type": "application/javascript",
-      "bytes": 401705
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DJSdQJJV.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DJSdQJJV.js",
-      "type": "application/javascript",
-      "bytes": 313
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/2.Qe2pTsz_.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/2.Qe2pTsz_.js",
-      "type": "application/javascript",
-      "bytes": 9189
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/CI3qL3Mi.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/CI3qL3Mi.js",
-      "type": "application/javascript",
-      "bytes": 1200
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/D13bECnM.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/D13bECnM.js",
-      "type": "application/javascript",
-      "bytes": 1295
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/16.Df9GhWD1.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/16.Df9GhWD1.js",
-      "type": "application/javascript",
-      "bytes": 119687
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/BK0lgLWS.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/BK0lgLWS.js",
-      "type": "application/javascript",
-      "bytes": 72630
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DNYAmqJ-.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DNYAmqJ-.js",
-      "type": "application/javascript",
-      "bytes": 5776
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/DEVAceC8.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/DEVAceC8.js",
-      "type": "application/javascript",
-      "bytes": 227
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/7BXJB4XA.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/7BXJB4XA.js",
-      "type": "application/javascript",
-      "bytes": 17328
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/BD79de3O.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/BD79de3O.js",
-      "type": "application/javascript",
-      "bytes": 20811
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/C7wcM6E2.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/C7wcM6E2.js",
-      "type": "application/javascript",
-      "bytes": 8250
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/nvh35pv5.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/nvh35pv5.js",
-      "type": "application/javascript",
-      "bytes": 2645
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/CjvYYy5N.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/CjvYYy5N.js",
-      "type": "application/javascript",
-      "bytes": 2013
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/B3Gtsw5y.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/B3Gtsw5y.js",
-      "type": "application/javascript",
-      "bytes": 3724
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/",
-      "file": "ref/web.cloudmoonapp.com/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 120767
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/share_image.png",
-      "file": "ref/web.cloudmoonapp.com/share_image.png",
-      "type": "image/png",
-      "bytes": 213620
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/zh/",
-      "file": "ref/web.cloudmoonapp.com/zh/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 125022
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/es/",
-      "file": "ref/web.cloudmoonapp.com/es/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 124610
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/pt/",
-      "file": "ref/web.cloudmoonapp.com/pt/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 124651
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/th/",
-      "file": "ref/web.cloudmoonapp.com/th/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 131083
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/ms/",
-      "file": "ref/web.cloudmoonapp.com/ms/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 124384
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/vi/",
-      "file": "ref/web.cloudmoonapp.com/vi/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 125899
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/id/",
-      "file": "ref/web.cloudmoonapp.com/id/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 123513
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/hi/",
-      "file": "ref/web.cloudmoonapp.com/hi/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 132102
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/ja/",
-      "file": "ref/web.cloudmoonapp.com/ja/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 129514
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/ko/",
-      "file": "ref/web.cloudmoonapp.com/ko/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 127326
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/fr/",
-      "file": "ref/web.cloudmoonapp.com/fr/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 125065
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/de/",
-      "file": "ref/web.cloudmoonapp.com/de/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 125038
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/ru/",
-      "file": "ref/web.cloudmoonapp.com/ru/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 129192
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/pl/",
-      "file": "ref/web.cloudmoonapp.com/pl/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 124397
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/bg/",
-      "file": "ref/web.cloudmoonapp.com/bg/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 128411
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/it/",
-      "file": "ref/web.cloudmoonapp.com/it/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 124456
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/tr/",
-      "file": "ref/web.cloudmoonapp.com/tr/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 124532
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/uk/",
-      "file": "ref/web.cloudmoonapp.com/uk/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 128574
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/ar/",
-      "file": "ref/web.cloudmoonapp.com/ar/index.html",
-      "type": "text/html; charset=utf-8",
-      "bytes": 126948
+      "bytes": 193
     },
     {
       "url": "https://web.cloudmoonapp.com/images/logo.png",
       "file": "ref/web.cloudmoonapp.com/images/logo.png",
       "type": "image/png",
       "bytes": 21292
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/android_icon.png",
-      "file": "ref/web.cloudmoonapp.com/images/android_icon.png",
-      "type": "image/png",
-      "bytes": 1558
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/google_play_icon.png",
-      "file": "ref/web.cloudmoonapp.com/images/google_play_icon.png",
-      "type": "image/png",
-      "bytes": 13214
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/apple_icon.png",
-      "file": "ref/web.cloudmoonapp.com/images/apple_icon.png",
-      "type": "image/png",
-      "bytes": 1185
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/app_store_icon.png",
-      "file": "ref/web.cloudmoonapp.com/images/app_store_icon.png",
-      "type": "image/png",
-      "bytes": 12439
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/favicon.ico",
-      "file": "ref/web.cloudmoonapp.com/favicon.ico",
-      "type": "image/vnd.microsoft.icon",
-      "bytes": 12006
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/1.B8mzA-Rw.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/1.B8mzA-Rw.js",
-      "type": "application/javascript",
-      "bytes": 509
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/3.DTW4z8ka.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/3.DTW4z8ka.js",
-      "type": "application/javascript",
-      "bytes": 3509
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/4.CEDiR5H3.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/4.CEDiR5H3.js",
-      "type": "application/javascript",
-      "bytes": 6342
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/5.kzy3TI9w.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/5.kzy3TI9w.js",
-      "type": "application/javascript",
-      "bytes": 7248
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/6.Dg0_dPT5.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/6.Dg0_dPT5.js",
-      "type": "application/javascript",
-      "bytes": 998
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/7.DhZTzDp-.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/7.DhZTzDp-.js",
-      "type": "application/javascript",
-      "bytes": 1297
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/8.1r4ODa8Y.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/8.1r4ODa8Y.js",
-      "type": "application/javascript",
-      "bytes": 1006
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/9.BZGjvsxR.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/9.BZGjvsxR.js",
-      "type": "application/javascript",
-      "bytes": 9783
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/10.DLE7wPcH.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/10.DLE7wPcH.js",
-      "type": "application/javascript",
-      "bytes": 7489
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/11.BKk7Glbz.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/11.BKk7Glbz.js",
-      "type": "application/javascript",
-      "bytes": 2527
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/12.DTjWxL5U.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/12.DTjWxL5U.js",
-      "type": "application/javascript",
-      "bytes": 3620
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/13.CJnat80y.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/13.CJnat80y.js",
-      "type": "application/javascript",
-      "bytes": 589
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/14.Ct2-cKd8.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/14.Ct2-cKd8.js",
-      "type": "application/javascript",
-      "bytes": 9358
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/15.D5XhVFLP.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/15.D5XhVFLP.js",
-      "type": "application/javascript",
-      "bytes": 6437
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/17.52pEX0TT.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/17.52pEX0TT.js",
-      "type": "application/javascript",
-      "bytes": 4452
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/18.Dl11Stuo.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/18.Dl11Stuo.js",
-      "type": "application/javascript",
-      "bytes": 21571
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/19.BNJpRv9n.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/19.BNJpRv9n.js",
-      "type": "application/javascript",
-      "bytes": 25559
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/20.gfL0Qla2.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/20.gfL0Qla2.js",
-      "type": "application/javascript",
-      "bytes": 3474
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/21.CuDAqAaV.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/21.CuDAqAaV.js",
-      "type": "application/javascript",
-      "bytes": 7059
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/22.4_dmvonS.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/22.4_dmvonS.js",
-      "type": "application/javascript",
-      "bytes": 7074
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/23.DuYcLCPz.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/23.DuYcLCPz.js",
-      "type": "application/javascript",
-      "bytes": 7002
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/24.DZtEuU8q.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/24.DZtEuU8q.js",
-      "type": "application/javascript",
-      "bytes": 6965
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/nodes/25.Bbi0U7_n.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/nodes/25.Bbi0U7_n.js",
-      "type": "application/javascript",
-      "bytes": 7244
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/icon_shoubing.svg",
-      "file": "ref/web.cloudmoonapp.com/images/icon_shoubing.svg",
-      "type": "image/svg+xml",
-      "bytes": 1915
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/discord.png",
-      "file": "ref/web.cloudmoonapp.com/images/discord.png",
-      "type": "image/png",
-      "bytes": 10386
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/reddit.png",
-      "file": "ref/web.cloudmoonapp.com/images/reddit.png",
-      "type": "image/png",
-      "bytes": 4978
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/facebook.png",
-      "file": "ref/web.cloudmoonapp.com/images/facebook.png",
-      "type": "image/png",
-      "bytes": 10010
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/discord_icon_white.png",
-      "file": "ref/web.cloudmoonapp.com/images/discord_icon_white.png",
-      "type": "image/png",
-      "bytes": 1524
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/default-avatar.png",
-      "file": "ref/web.cloudmoonapp.com/images/default-avatar.png",
-      "type": "image/png",
-      "bytes": 4416
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/gift_icon.png",
-      "file": "ref/web.cloudmoonapp.com/images/gift_icon.png",
-      "type": "image/png",
-      "bytes": 2139
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/feedback-icon.png",
-      "file": "ref/web.cloudmoonapp.com/images/feedback-icon.png",
-      "type": "image/png",
-      "bytes": 8813
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/js/cm-compat.js",
-      "file": "ref/web.cloudmoonapp.com/js/cm-compat.js",
-      "type": "application/javascript",
-      "bytes": 8129
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/_app/immutable/chunks/Bv2ttXfT.js",
-      "file": "ref/web.cloudmoonapp.com/_app/immutable/chunks/Bv2ttXfT.js",
-      "type": "application/javascript",
-      "bytes": 2404
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/cloudmoon_icon_512_2.png@2x.png",
-      "file": "ref/web.cloudmoonapp.com/images/cloudmoon_icon_512_2.png@2x.png",
-      "type": "image/png",
-      "bytes": 5075
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/NoDownloads.png@2x.png",
-      "file": "ref/web.cloudmoonapp.com/images/NoDownloads.png@2x.png",
-      "type": "image/png",
-      "bytes": 5930
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/HundredsOfGames.png@2x.png",
-      "file": "ref/web.cloudmoonapp.com/images/HundredsOfGames.png@2x.png",
-      "type": "image/png",
-      "bytes": 3004
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/FreeToPlay.png@2x.png",
-      "file": "ref/web.cloudmoonapp.com/images/FreeToPlay.png@2x.png",
-      "type": "image/png",
-      "bytes": 6557
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/CrossPlatform.png@2x.png",
-      "file": "ref/web.cloudmoonapp.com/images/CrossPlatform.png@2x.png",
-      "type": "image/png",
-      "bytes": 2934
-    },
-    {
-      "url": "https://web.cloudmoonapp.com/images/LowSpecsFriendly.png@2x.png",
-      "file": "ref/web.cloudmoonapp.com/images/LowSpecsFriendly.png@2x.png",
-      "type": "image/png",
-      "bytes": 4192
     }
   ]
 }
