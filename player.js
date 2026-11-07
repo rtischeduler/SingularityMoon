@@ -7,6 +7,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
 const STUN = [{ urls: "stun:stun.ipfire.org:3478" }, { urls: "stun:global.stun.twilio.com:3478" }, { urls: "stun:stun.l.google.com:19302" }];
 const ERR = {
+  99999: "The server returned an unspecified error (99999) while starting the game.",
   30001: "Connection failed. Please try 'Clear Games Cache' and reopen the game.",
   30002: "Free access is blocked for this account right now (ad blocker / plan needed).",
   30003: "No play time left on this account.",
@@ -108,6 +109,7 @@ export class Player {
       await this._signal();
     } catch (e) {
       if (this.stopped) return;
+      console.error("[player] start failed:", e.message || String(e));
       this.say(e.message || String(e), "err");
       await this.stop(true, e.message || String(e));
     }
@@ -120,6 +122,7 @@ export class Player {
       if (!queued) this.say("Requesting a cloud phone…");
       let j;
       try {
+        console.log("[player] POST /phone/connect game=" + this.game + " server_id=" + this.serverId + " android_id=" + this.androidId);
         j = await this.api("/phone/connect", { method: "POST", body: {
           android_id: this.androidId, game_name: this.game, screen_res: "720x1280", server_id: this.serverId,
           params: JSON.stringify({ language: "en", locale: (navigator.language.split("-")[1] || "").toLowerCase() }), ad_unblock: true } });

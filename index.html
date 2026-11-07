@@ -315,6 +315,7 @@ async function loadLibrary() {
       high: !!g.is_high,
       pc: !!g.is_pc,
       released: g.released_at || "",
+      raw: g,
       cats: (g.categories || []).map((x) => typeof x === "string" ? x : (x && (x.key || x.name)) || "").filter(Boolean),
     })).sort((a, b) => a.title.localeCompare(b.title));
     activeCat = "all";
@@ -416,8 +417,10 @@ async function launch(g) {
   try {
     const p = await api("/phone/list");
     androidId = p.code === 0 && p.data && p.data.list && p.data.list[0] && p.data.list[0].android_id;
+    try { console.log("[launch] phone entry: " + JSON.stringify(p.data.list[0]).slice(0, 900)); } catch {}
   } catch (e) { console.warn(e); }
   if (!androidId) { box.classList.remove("on"); say("No cloud phone found on this account", "err"); return; }
+  try { const { raw } = g; console.log("[launch] game entry: " + JSON.stringify(raw).slice(0, 900)); } catch {}
   console.log("[launch] game=" + g.id + " androidId=" + androidId + " serverId=" + serverId);
   player = new Player({
     api, getLibcurl, game: g.id, androidId, serverId, mount: box,
