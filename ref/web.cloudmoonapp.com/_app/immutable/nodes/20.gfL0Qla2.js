@@ -1,0 +1,18 @@
+import"../chunks/Bzak7iHL.js";import"../chunks/CGmra_7w.js";import{o as F,a as H}from"../chunks/DRnWhx_Z.js";import{p as J,A as s,w as S,x as K,f as c,a as N,t as Q,b as p,c as V,y as i,z as v,s as l,d as r,r as o}from"../chunks/C_wJjJIt.js";import{i as n}from"../chunks/CkfUSIYj.js";import{s as Y}from"../chunks/DV3WfrKw.js";import{s as W}from"../chunks/CDSWv4hl.js";import{i as Z}from"../chunks/BAlDkw64.js";import{s as ee,a as te}from"../chunks/n50NdzMx.js";import{p as ie}from"../chunks/DJSdQJJV.js";import{p as se}from"../chunks/DU-wofq6.js";import{R as ae}from"../chunks/nvh35pv5.js";var le=c('<div class="overlay svelte-195pybl"><div class="loader svelte-195pybl"><div class="circle svelte-195pybl"></div> <div class="cloud cloud1 svelte-195pybl"></div> <div class="cloud cloud2 svelte-195pybl"></div></div></div>'),re=c('<div class="sky svelte-195pybl" style="left: 0.5rem; top: 0.5rem;"><div id="lyt2-left-img-div" class="svelte-195pybl"></div> <div class="a-div-placeholder svelte-195pybl"></div></div>'),oe=c('<div class="sky svelte-195pybl" style="right: 0.5rem; top: 0.5rem;"><div id="lyt2-right-img-div" class="svelte-195pybl"></div> <div class="a-div-placeholder svelte-195pybl"></div></div>'),ve=c('<div class="leaderboard svelte-195pybl"><div id="lyt3-bottom-img-div" class="svelte-195pybl"></div> <div class="a-div-placeholder svelte-195pybl"></div></div>'),de=c('<!> <!> <div class="content svelte-195pybl"><div class="svelte-195pybl"><!> <div class="svelte-195pybl"><div style="width: 100%;height: 100%;overflow: hidden;" class="svelte-195pybl"><iframe width="100%" height="100%" allow="" class="svelte-195pybl"></iframe></div></div> <!></div> <!></div>',1);function xe(k,z){J(z,!1);const h=()=>te(se,"$phoneData",B),[B,T]=ee();let u=v(!0),w=ie.params.id,a=v(!0);const j="1025644",L="76560";let m=v(0);const _=()=>{s(m,window.innerWidth)};let x=v(`https://play.gamepix.com/${w}/embed?sid=02CUO`);w==="bloxd-io"&&s(x,"https://bloxd.io/"),F(async()=>{window.scrollTo(0,0),window.addEventListener("resize",_),_(),h().is_paid&&s(a,!1),i(m)<=768&&s(a,!1),setTimeout(()=>{s(u,!1)},1e3),H(()=>{window.removeEventListener("resize",_)})});let b=v(),g=v();S(()=>(i(m),h()),()=>{i(m)<=768?s(a,!1):h().is_paid||s(a,!0)}),S(()=>i(a),()=>{i(a)?(s(b,"height: calc(100% - 150px);position: relative;"),s(g,`height: 100%;
+      max-height: calc(100vh - 150px);
+      max-width: calc(100% - 338px);
+      aspect-ratio: 16/9;
+      position: absolute;
+      top:8px;
+      left:50%;
+      transform:translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;`)):(s(b,"height: 100%;position: relative;"),s(g,`height: 100%;
+      aspect-ratio: 16/9;
+      position: absolute;
+      left:50%;
+      transform:translateX(-50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;`))}),K(),Z();var D=de(),$=N(D);{var R=e=>{ae(e,{publisherId:j,id:L})};n($,e=>{i(a)&&e(R)})}var A=l($,2);{var U=e=>{var t=le();p(e,t)};n(A,e=>{i(u)&&e(U)})}var I=l(A,2),f=r(I),C=r(f);{var X=e=>{var t=re(),d=l(r(t),2);d.textContent="Advertisement",o(t),p(e,t)};n(C,e=>{i(a)&&e(X)})}var y=l(C,2),E=r(y),G=r(E);o(E),o(y);var M=l(y,2);{var O=e=>{var t=oe(),d=l(r(t),2);d.textContent="Advertisement",o(t),p(e,t)};n(M,e=>{i(a)&&e(O)})}o(f);var P=l(f,2);{var q=e=>{var t=ve(),d=l(r(t),2);d.textContent="Advertisement",o(t),p(e,t)};n(P,e=>{i(a)&&e(q)})}o(I),Q(()=>{W(f,i(b)),W(y,i(g)),Y(G,"src",i(x))}),p(k,D),V(),T()}export{xe as component};
