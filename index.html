@@ -170,6 +170,7 @@ select{background:#0f1330;border:1px solid var(--line);border-radius:10px;paddin
 import { Player } from "./player.js";
 const API_HOSTS = ["https://api.prod.cloudmoonapp.com", "https://api.cloudmoon.cloudbatata.com", "https://api.prod.geometry.today"];
 const SESSION = "singularitymoon.session";
+const CREDS = "singularitymoon.creds";
 const $ = (id) => document.getElementById(id);
 const withTimeout = (p, ms, label) => { let t; return Promise.race([p, new Promise((_, rej) => { t = setTimeout(() => rej(new Error(label + " timed out")), ms); })]).finally(() => clearTimeout(t)); };
 const store = {
@@ -197,7 +198,7 @@ function deviceId() {
   return d;
 }
 
-async function api(path, { method = "GET", body } = {}) {
+async function api(path, { method = "GET", body } = {}, retried = false) {
   let lastErr = new Error("No API host reachable");
   for (let round = 0; round < 2; round++) {
     const { libcurl } = await window.__getProxy({ log, say });
@@ -221,7 +222,10 @@ async function api(path, { method = "GET", body } = {}) {
         try { j = JSON.parse(text); } catch { lastErr = new Error("Unexpected response (" + r.status + ")"); continue; }
         apiHost = h;
         console.log("[api] " + method + " " + path + " @" + new URL(h).host + " → HTTP " + r.status + " " + text.slice(0, 400));
-        if (String(j.code) === "40001") { signOut(true); throw new Error("Session expired — sign in again"); }
+        if (String(j.code) === "40001") {
+          if (!retried && !path.startsWith("/login") && await relogin()) return await api(path, { method, body }, true);
+          signOut(true); throw new Error("Session expired — sign in again");
+        }
         return j;
       } catch (e) {
         if (e && /expired/.test(e.message)) throw e;
@@ -235,6 +239,20 @@ async function api(path, { method = "GET", body } = {}) {
 }
 
 /* ---------- auth ---------- */
+async function relogin() {
+  const c = store.get(CREDS);
+  if (!c || !c.email || !c.password) return false;
+  try {
+    const j = await api("/login/pwd", { method: "POST", body: { email: c.email, password: c.password } });
+    if (j.code === 0 && j.data && j.data.token) {
+      session = { userId: j.data.user_id, token: j.data.token };
+      store.set(SESSION, session);
+      return true;
+    }
+    store.del(CREDS);
+  } catch (e) { console.warn("auto sign-in failed", e); }
+  return false;
+}
 function showAuth() {
   $("auth").classList.remove("hidden");
   $("lib").classList.add("hidden");
@@ -249,6 +267,7 @@ function showLib() {
 }
 function signOut(silent) {
   session = null; store.del(SESSION); all = [];
+  if (!silent) store.del(CREDS);
   $("grid").textContent = "";
   showAuth();
   if (!silent) say("Signed out");
@@ -260,10 +279,12 @@ $("form").addEventListener("submit", async (ev) => {
   const btns = [$("go"), $("guest")]; btns.forEach((b) => b.disabled = true);
   try {
     say("Signing in…");
-    const j = await api("/login/pwd", { method: "POST", body: { email: $("email").value.trim(), password: $("pw").value } });
+    const email = $("email").value.trim(), password = $("pw").value;
+    const j = await api("/login/pwd", { method: "POST", body: { email, password } });
     if (j.code === 0 && j.data && j.data.token) {
       session = { userId: j.data.user_id, token: j.data.token };
       store.set(SESSION, session);
+      store.set(CREDS, { email, password });
       $("pw").value = "";
       await openLibrary();
     } else {
@@ -447,6 +468,9 @@ $("pfs").addEventListener("click", () => { const b = $("play"); document.fullscr
 (async () => {
   // warm the proxy right away so sign-in is quick
   window.__getProxy({ log, say }).then(() => say("Proxy ready", "ok")).catch((e) => say("Proxy error: " + (e.message || e), "err"));
+  const saved = store.get(CREDS);
+  if (saved && saved.email) $("email").value = saved.email;
+  if (!(session && session.token) && saved) { say("Signing in…"); await relogin(); }
   if (session && session.token) { try { await openLibrary(); } catch (e) { console.warn(e); } }
 })();
 </script>
